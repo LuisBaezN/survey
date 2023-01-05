@@ -1,11 +1,11 @@
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
 let dbConnection;
-let uri = 'mongodb+srv://Luis:7euVEUmx1ihZHKm5@books.uqc0saf.mongodb.net/?retryWrites=true&w=majority';
 
 module.exports = {
     connectToDb: (cb) => {
-        MongoClient.connect(uri)
+        MongoClient.connect(process.env.URI)
             .then((client) => {
                 dbConnection = client.db();
                 return cb();
